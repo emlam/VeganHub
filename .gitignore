@@ -1,0 +1,4 @@
+config_secret.json
+env/
+yelp_secret.sh
+*.pyc

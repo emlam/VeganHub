@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>VeganHub</title>
+</head>
+<body>
+
+<h1>Welcome!</h1>
+    <form action="/handle-search" method="POST">
+        
+        <input type="text" name="Search" placeholder="Enter your search here.." required>
+        
+        <select name="search_type">
+              <option value="None">-----</option>
+              <option value="Restaurants">Restaurants</option>
+              <option value="Drinks">Drinks</option>
+              <option value="Products">Products</option>
+        </select>
+        
+        <input type="submit" value="Go!" id="search_button">
+    </form>
+
+
+<!-- <p>Your results: {{ data }} </p> -->
+
+</body>
+</html>
