@@ -16,7 +16,7 @@ import argparse
 import os
 import json
 import pprint
-import sys
+# import sys
 import urllib
 import urllib2
 
@@ -73,7 +73,7 @@ def request(host, path, url_params=None):
     return signed_url
 
 
-    print u'Querying {0} ...'.format(url)
+    # print u'Querying {0} ...'.format(url)
 
     conn = urllib2.urlopen(signed_url, None)
     try:

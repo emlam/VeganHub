@@ -5,15 +5,19 @@
 </head>
 <body>
 
-<h1>Welcome!</h1>
+<h3>Your results for {{ term }}</h3>
 
-    {% for business in data['businesses'] %}
+<!--     {% for business in data['businesses'] %}
   <p> Restaurant Name of your results!: {{ business['name']}} </p>
-    {% endfor %}
+    {% endfor %} -->
 
+    {{ data }} 
 
-  {}
+<!-- <p> How about this? </p>
 
+    {% for i in cleaned_data %}
+    {{ i }}
+    {% endfor %} -->
 
 </body>
 </html>

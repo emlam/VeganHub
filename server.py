@@ -24,16 +24,18 @@ def handle_search():
         api_result = restaurant_search_response(search_term)
 
     cleaned_data = {}
-    for business in api_result['businesses']:
-        cleaned_data[business['name']] = {"phone": business['display_phone']}
 
-    for business in api_result['businesses.location']:
-        cleaned_data[business['display_address']] = {"address": business['display_address']}
-
+    for i in range(len(api_result['businesses'])):
+        cleaned_data[api_result['businesses'][i]['name']] = {
+                "address": api_result['businesses'][i]['location']['display_address'],
+                "phone": api_result['businesses'][i]['display_phone'],
+                "snippet_text": api_result['businesses'][i]['snippet_text'],
+            }
 
     print "Here is your new cleaned data:", cleaned_data
 
-    return render_template("restaurant-search-response.html", data=api_result)
+    return render_template("restaurant-search-response.html", data=cleaned_data,
+                                                            term=search_term)
 
 #helper functions below
 def restaurant_search_response(term):
