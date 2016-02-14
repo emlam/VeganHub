@@ -7,7 +7,12 @@
 
 <h1>Welcome!</h1>
 
-  <p> Your Results!: {{ data }} </p>
+    {% for business in data['businesses'] %}
+  <p> Restaurant Name of your results!: {{ business['name']}} </p>
+    {% endfor %}
+
+
+  {}
 
 
 </body>

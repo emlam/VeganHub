@@ -2,8 +2,10 @@
 <html>
 <head>
   <title>VeganHub</title>
+<!-- <script src="https://code.jquery.com/jquery.js"></script> -->
 </head>
 <body>
+<script src="https://code.jquery.com/jquery.js"></script>
 
 <h1>Welcome!</h1>
     <form action="/handle-search" method="POST">
@@ -12,12 +14,29 @@
         
         <select name="search_type">
               <option value="None">-----</option>
-              <option value="Restaurants">Restaurants</option>
+              <option value="Restaurants" id="Restaurants">Restaurants</option>
               <option value="Drinks">Drinks</option>
               <option value="Products">Products</option>
         </select>
+
+        <div id="zipcode"><input type="text" name="zipcode"><div/>
+        <!-- $("#zipcode") -->
         
         <input type="submit" value="Go!" id="search_button">
+
+<!--     $("#show").click(function(){
+        $("zipcode").show();
+    }); -->
+
+    var zipcode = document.getElementById('zipcode');
+
+    function displayButton(evt) {
+    }
+
+    zipcode.addEventListener('click',show;)
+
+    console.log(zipcode);
+
     </form>
 
 

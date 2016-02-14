@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import urllib2
 import yelp_test
 import json
+import pprint
 
 app = Flask(__name__)
 
@@ -22,8 +23,17 @@ def handle_search():
     if search_type == "Restaurants":
         api_result = restaurant_search_response(search_term)
 
+    cleaned_data = {}
+    for business in api_result['businesses']:
+        cleaned_data[business['name']] = {"phone": business['display_phone']}
 
-    return render_template("restaurant-search-response.html",data=api_result)
+    for business in api_result['businesses.location']:
+        cleaned_data[business['display_address']] = {"address": business['display_address']}
+
+
+    print "Here is your new cleaned data:", cleaned_data
+
+    return render_template("restaurant-search-response.html", data=api_result)
 
 #helper functions below
 def restaurant_search_response(term):
@@ -33,13 +43,6 @@ def restaurant_search_response(term):
     json_obj = urllib2.urlopen(results)
     data = json.load(json_obj)
     return data
-
-    # results = yelp_test.query_api(term, 'san francisco')
-    # json_obj = urllib2.urlopen(results)
-    # read_data = json.loads(json_obj.read())
-    # print read_data
-    # # data = json.load(json_obj)
-    # return read_data
 
 
 def search_drink_db(term):
