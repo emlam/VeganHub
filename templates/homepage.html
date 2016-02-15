@@ -2,25 +2,42 @@
 <html>
 <head>
   <title>VeganHub</title>
+<!-- <script src="https://code.jquery.com/jquery.js"></script> -->
 </head>
 <body>
+<script src="https://code.jquery.com/jquery.js"></script>
 
 <h1>Welcome!</h1>
     <form action="/handle-search" method="POST">
         
         <input type="text" name="Search" placeholder="Enter your search here.." required>
         
-        <select name="search_type">
+        <select name="search_type" onchange="check(this);">
               <option value="None">-----</option>
               <option value="Restaurants" id="Restaurants">Restaurants</option>
               <option value="Drinks">Drinks</option>
               <option value="Products">Products</option>
         </select>
 
+        <div id="zipcode" style="display: none;">
+            <input type="text" name="zipcode" placeholder="location"><div/>
         
         <input type="submit" value="Go!" id="search_button">
 
     </form>
+
+    <script>
+
+    function check(that) {
+        if (that.value == "Restaurants") {
+            document.getElementById("zipcode").style.display = "block";
+        } else {
+            document.getElementById("zipcode").style.display = "none";
+        }
+    }
+
+    
+    </script>
 
 
 </body>

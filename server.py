@@ -32,6 +32,7 @@ def handle_search():
                 "snippet_text": api_result['businesses'][i]['snippet_text'],
             }
 
+
     print "Here is your new cleaned data:", cleaned_data
 
     return render_template("restaurant-search-response.html", data=cleaned_data,
