@@ -1,30 +1,36 @@
-<!doctype html>
-<html>
-<head>
-  <title>VeganHub</title>
-<!-- <script src="https://code.jquery.com/jquery.js"></script> -->
-</head>
+{% extends 'base.html' %}
+
+{% block content %}
+
 <body>
 <script src="https://code.jquery.com/jquery.js"></script>
 
-<h1>Welcome!</h1>
-    <form action="/handle-search" method="POST">
-        
-        <input type="text" name="Search" placeholder="Enter your search here.." required>
-        
-        <select name="search_type" onchange="check(this);">
-              <option value="None">-----</option>
-              <option value="Restaurants" id="Restaurants">Restaurants</option>
-              <option value="Drinks">Drinks</option>
-              <option value="Products">Products</option>
-        </select>
+<h1 class="header">Welcome!</h1>
+<div class="container">
 
-        <div id="zipcode" style="display: none;">
-            <input type="text" name="zipcode" placeholder="location"><div/>
+    <form action="/handle-search" method="POST">
+        <div class="form-group"> 
+            <input class ="form-control"type="text" name="Search" placeholder="Enter your search here.." required>
+        </div>
+
+        <div class="form-group">
+            <select class="form-control" name="search_type" onchange="check(this);">
+                <option value="None">Make a selection</option>
+                <option value="Restaurants" id="Restaurants">Restaurants</option>
+                <option value="Drinks">Drinks</option>
+                <option value="Products">Products</option>
+            </select>
+        </div>
+
+        
+            <div class="form-group"id="zipcode" style="display: none;">
+                <input class="form-control" type="text" name="zipcode" placeholder="location">
+            </div>
         
         <input type="submit" value="Go!" id="search_button">
 
     </form>
+</div>
 
     <script>
 
@@ -39,6 +45,6 @@
     
     </script>
 
-
+{% endblock %}
 </body>
 </html>

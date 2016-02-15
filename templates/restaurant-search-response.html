@@ -1,18 +1,17 @@
-<!doctype html>
-<html>
-<head>
-  <title>VeganHub</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h3>Your results for {{ term }}</h3>
+{% block content %}
 
-<!--     {% for business in data['businesses'] %}
-  <p> Restaurant Name of your results!: {{ business['name']}} </p>
-    {% endfor %} -->
+<h3>Your results for {{ term }} in {{ location }} </h3>
+<!-- {{ data }} -->
 
-{{ data }}
+{% for item in data.itervalues() %}
+<p>Address: {{ item.address }} <p>
+<p>Phone: {{ item.phone }}
+<p>Info: {{ item.snippet_text }} </p>
+<p>Link: {{ item.url }} </p>
+{% endfor %}
    
-
+{% endblock %}
 </body>
 </html>

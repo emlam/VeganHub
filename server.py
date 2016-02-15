@@ -24,10 +24,8 @@ def handle_search():
 
     search_type = request.form.get("search_type")
 
-
     if search_type == "Restaurants":
         api_result = restaurant_search_response(search_term, location_term)
-
 
     cleaned_data = {}
 
@@ -36,14 +34,15 @@ def handle_search():
                 "address": api_result['businesses'][i]['location']['display_address'],
                 "phone": api_result['businesses'][i]['display_phone'],
                 "snippet_text": api_result['businesses'][i]['snippet_text'],
+                "url": api_result['businesses'][i]['url']
             }
-
 
     print "Here is your new cleaned data:", cleaned_data
 
-    return render_template("restaurant-search-response.html",data=cleaned_data,
-                                                            term=search_term,
-                                                            location=location_term)
+    return render_template("restaurant-search-response.html",
+                                                        data=cleaned_data,
+                                                        term=search_term,
+                                                        location=location_term)
 
 #helper functions below
 def restaurant_search_response(term,location):
