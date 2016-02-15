@@ -1,8 +1,7 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 import urllib2
 import yelp_test
 import json
-import pprint
 
 app = Flask(__name__)
 
@@ -18,10 +17,17 @@ def handle_search():
     """Shows results from querying the yelp api"""
 
     search_term = request.form.get("Search")
+    if request.form.get("zipcode"):
+        location_term = request.form.get("zipcode")
+    else:
+        location_term = 'san francisco,ca'
+
     search_type = request.form.get("search_type")
 
+
     if search_type == "Restaurants":
-        api_result = restaurant_search_response(search_term)
+        api_result = restaurant_search_response(search_term, location_term)
+
 
     cleaned_data = {}
 
@@ -35,14 +41,15 @@ def handle_search():
 
     print "Here is your new cleaned data:", cleaned_data
 
-    return render_template("restaurant-search-response.html", data=cleaned_data,
-                                                            term=search_term)
+    return render_template("restaurant-search-response.html",data=cleaned_data,
+                                                            term=search_term,
+                                                            location=location_term)
 
 #helper functions below
-def restaurant_search_response(term):
+def restaurant_search_response(term,location):
     """ Get a Response from Yelp API """
 
-    results = yelp_test.query_api(term, 'san francisco')
+    results = yelp_test.query_api(term,location)
     json_obj = urllib2.urlopen(results)
     data = json.load(json_obj)
     return data
