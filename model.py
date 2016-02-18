@@ -16,13 +16,13 @@ class Drink(db.Model):
     __tablename__ = "drink"
 
     #drink_code options: w for wine, b for beer, l for liquor\
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    drink_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     drink_code = db.Column(db.String)
-    company_name = db.Columen(db.String(55), nullable=True)
-    url = db.Column(db.String(100), nullable=True)
-    tag = db.Column(db.String(65), nullable=False)
+    company_name = db.Column(db.String(200), nullable=True)
+    url = db.Column(db.String(450), nullable=True)
+    tag = db.Column(db.String(200), nullable=False)
     notes = db.Column(db.String(400), nullable=True)
-    status = db.Column(db.String(75), nullable=True)
+    status = db.Column(db.String(300), nullable=True)
     red_yellow_green = db.Column(db.String(65), nullable=False)
 
     def __repr__(self):

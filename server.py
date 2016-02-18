@@ -35,12 +35,13 @@ def handle_search():
     cleaned_data = {}
 
     for i in range(len(api_result['businesses'])):
-        cleaned_data[api_result['businesses'][i]['name']] = {
-                "name": api_result['businesses'][i]['name'],
-                "address": api_result['businesses'][i]['location']['display_address'],
-                "phone": api_result['businesses'][i]['display_phone'],
-                "snippet_text": api_result['businesses'][i]['snippet_text'],
-                "url": api_result['businesses'][i]['url']
+        b = api_result['businesses'][i]
+        cleaned_data[b['name']] = {
+                "name": b['name'],
+                "address": b['location']['display_address'],
+                "phone": b['display_phone'],
+                "snippet_text": b['snippet_text'],
+                "url": b['url']
             }
 
     print "Here is your new cleaned data:", cleaned_data
