@@ -2,21 +2,26 @@ from flask import Flask, render_template, request
 import urllib2
 import yelp_test
 import json
+import os
 
 app = Flask(__name__)
 
 # routes up here
+
+
 @app.route('/')
 def home_page():
     """ Shows the home page """
 
     return render_template("homepage.html")
 
+
 @app.route('/handle-search', methods=["POST"])
 def handle_search():
     """Shows results from querying the yelp api"""
 
     search_term = request.form.get("Search")
+
     if request.form.get("zipcode"):
         location_term = request.form.get("zipcode")
     else:
@@ -31,6 +36,7 @@ def handle_search():
 
     for i in range(len(api_result['businesses'])):
         cleaned_data[api_result['businesses'][i]['name']] = {
+                "name": api_result['businesses'][i]['name'],
                 "address": api_result['businesses'][i]['location']['display_address'],
                 "phone": api_result['businesses'][i]['display_phone'],
                 "snippet_text": api_result['businesses'][i]['snippet_text'],
@@ -39,16 +45,17 @@ def handle_search():
 
     print "Here is your new cleaned data:", cleaned_data
 
-    return render_template("restaurant-search-response.html",
-                                                        data=cleaned_data,
-                                                        term=search_term,
-                                                        location=location_term)
+    return render_template("restaurant-search-response.html", data=cleaned_data,
+                                                    term=search_term,
+                                                    location=location_term)
 
 #helper functions below
-def restaurant_search_response(term,location):
+
+
+def restaurant_search_response(term, location):
     """ Get a Response from Yelp API """
 
-    results = yelp_test.query_api(term,location)
+    results = yelp_test.query_api(term, location)
     json_obj = urllib2.urlopen(results)
     data = json.load(json_obj)
     return data
