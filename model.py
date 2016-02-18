@@ -21,9 +21,7 @@ class Drink(db.Model):
     company_name = db.Column(db.String(200), nullable=True)
     url = db.Column(db.String(450), nullable=True)
     tag = db.Column(db.String(200), nullable=False)
-    notes = db.Column(db.String(400), nullable=True)
     status = db.Column(db.String(300), nullable=True)
-    red_yellow_green = db.Column(db.String(65), nullable=False)
 
     def __repr__(self):
         """Provide helpful representation when printed."""
