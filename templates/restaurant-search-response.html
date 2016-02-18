@@ -2,16 +2,18 @@
 
 {% block content %}
 
-<h3>Your results for {{ term }} in {{ location }} </h3>
-<!-- {{ data }} -->
+<h2>Your results for <em>{{ term }}</em> in <em>{{ location }}</em> </h2>
+
 
 {% for item in data.itervalues() %}
-<p>Address: {{ item.address }} <p>
-<p>Phone: {{ item.phone }}
-<p>Info: {{ item.snippet_text }} </p>
-<p>Link: {{ item.url }} </p>
+<p>
+<strong>Name: </strong> {{ item.name }} <br>
+Address: {{ item.address }} <br>
+Phone: {{ item.phone }} <br>
+Info: {{ item.snippet_text }} <br>
+Link: {{ item.url }} </p>
 {% endfor %}
-   
+
 {% endblock %}
 </body>
 </html>
