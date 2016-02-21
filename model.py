@@ -1,17 +1,18 @@
 """ Model & DB function for VeganHub Drink Search """
 
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import class_mapper, ColumnProperty
 
 #This makes the connection to Postgres
-
 db = SQLAlchemy()
+
 
 ##############################################################################
 # Model definitions
 
 
 class Drink(db.Model):
-    """ Wine information.  """
+    """ Drink information.  """
 
     __tablename__ = "drink"
 
@@ -25,7 +26,8 @@ class Drink(db.Model):
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return "<Drink drink_code=%s tag=%s" % (self.drink_code, self.tag)
+        return "<Drink drink_code=%s tag=%s " % (self.drink_code, self.tag)
+
 
 ##############################################################################
 # Helper functions
@@ -44,6 +46,5 @@ def connect_to_db(app):
 if __name__ == "__main__":
     # As a convenience that will allow us to work with db directly.
     from server import app
-    # from server import app
     connect_to_db(app)
     print "Connected to DB."
