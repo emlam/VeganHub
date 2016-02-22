@@ -1,7 +1,6 @@
 """ Model & DB function for VeganHub Drink Search """
 
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import class_mapper, ColumnProperty
 
 #This makes the connection to Postgres
 db = SQLAlchemy()

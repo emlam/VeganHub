@@ -2,8 +2,9 @@ from flask import Flask, render_template, request
 import urllib2
 import yelp_test
 import json
+from sqlalchemy import or_
 
-from model import connect_to_db, db, Drink
+from model import connect_to_db, Drink
 
 app = Flask(__name__)
 
@@ -37,31 +38,28 @@ def handle_search():
     #Logic to see where search term should be sent to.
     if search_type == "Restaurants":
         api_result = restaurant_search_response(search_term, location_term)
-    elif search_type == "Drinks":
-        db_result = search_drink_db(search_term)
-    else:
-        print "nothing here, sorry. "
-
-    #Making an empty dictionary to add values I want from Yelp response
-    cleaned_data = {}
-
-    #Iterating through the response to pull out information and place into
-    #my new empty dictionary
-    for i in range(len(api_result['businesses'])):
-        b = api_result['businesses'][i]
-        cleaned_data[b['name']] = {
+        #Making an empty dictionary to add values I want from Yelp response
+        cleaned_data = {}
+        #Iterating through the response to pull out information and place into
+        #my new empty dictionary
+        for i in range(len(api_result['businesses'])):
+            b = api_result['businesses'][i]
+            cleaned_data[b['name']] = {
                 "name": b['name'],
                 "address": b['location']['display_address'],
                 "phone": b['display_phone'],
                 "snippet_text": api_result['businesses'][i]['snippet_text'],
                 "url": b['url']
-            }
-
-    # return render_template("restaurant-search-response.html", data=cleaned_data,
-                                                    # term=search_term,
-                                                    # location=location_term)
-
-    return render_template('drink_search.html', tag=db_result)
+                }
+        return render_template("restaurant-search-response.html",
+                                data=cleaned_data,
+                                term=search_term,
+                                location=location_term)
+    elif search_type == "Drinks":
+        db_result = search_drink_db(search_term)
+        return render_template('drink_search.html', term=db_result)
+    else:
+        print "nothing here, sorry. "
 
 
 #helper functions below
@@ -76,14 +74,15 @@ def restaurant_search_response(term, location):
     return data
 
 
-def search_drink_db(tag):
+def search_drink_db(term):
     """ Search the drink db """
 
     #get form variables
-    drink = Drink.query.filter_by(tag=tag).all()
-    print "YOU MADE IT!!!!!!!!"
-    return render_template('drink_search.html', tag=tag)
-
+    drink = Drink.query.filter(or_(Drink.status.like("%"+term+"%"),
+            Drink.drink_code.like("%"+term+"%"), Drink.company_name.like("%"+term+"%"),
+            Drink.tag.like("%"+term+"%"))).all()
+    print drink
+    return drink
 
 if __name__ == '__main__':
     app.debug = True
