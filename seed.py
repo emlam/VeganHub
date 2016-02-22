@@ -7,10 +7,9 @@ import json
 
 
 def load_drink():
-    """Load wine information into database."""
+    """Load drink information into database."""
 
     file_list = ["seed_data/wine.json", "seed_data/beer.json", "seed_data/liquor.json"]
-    # file_list = ["seed_data/wine.json"]
     for item_file_name in file_list:
         json_string = open(item_file_name).read()
         data = json.loads(json_string)
@@ -32,9 +31,9 @@ def load_drink():
                 drink_code = "liquor"
 
             drink = Drink(
-                            drink_code=drink_code, 
+                            drink_code=drink_code,
                             company_name=company_name,
-                            url=url, 
+                            url=url,
                             status=status,
                             tag=tag
                             )
@@ -48,7 +47,5 @@ def load_drink():
 
 if __name__ == "__main__":
     connect_to_db(app)
-# In case tables haven't been created, create them
-    # db.create_all()
+# In case tables haven't been created, create them # db.create_all()
     load_drink()
-#     # set_val_user_id()
