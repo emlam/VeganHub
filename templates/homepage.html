@@ -10,7 +10,7 @@
 
     <form action="/handle-search" method="POST">
 
-        <div class="form-group row">
+        <div class="form-group row col-xs-12 col-md-6 col-lg-9">
             <select class="form-control" name="search_type" onchange="check(this);">
                 <option value="None">Make a selection</option>
                 <option value="Restaurants" id="Restaurants">Restaurants</option>
@@ -19,7 +19,7 @@
             </select>
         </div>
 
-        <div class="form-group row"> 
+        <div class="form-group form-group row col-xs-12 col-md-6 col-lg-9"> 
             <div class="span3"><input class ="form-control"type="text" name="Search" placeholder="Enter your search here.." required>
             </div>
         </div>
@@ -45,7 +45,25 @@
             document.getElementById("zipcode").style.display = "none";
         }
     }
+    </script>
+    <script type="text/javascript">
 
+    // if ("geolocation" in navigator) {
+    // /* geolocation is available */
+    // console.log("geolocation");
+    // } else {
+    // /* geolocation IS NOT available */
+    // }
+
+
+    navigator.geolocation.getCurrentPosition(function(position){
+        console.log("Looks like this works..");
+        (position.coords.latitude,position.coords.longitude);
+    });
+
+    // if thegeolocation is available, get the position if the user allows.
+    //if it's not, then set the user can input their location
+    //if user does not send their location, search with default
     
     </script>
 
