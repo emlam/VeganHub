@@ -10,7 +10,7 @@
 
     <form action="/handle-search" method="POST">
 
-        <div class="form-group row col-xs-12 col-md-6 col-lg-9">
+        <div class="form-group row col-xs-12 col-md-6 col-lg-offset-3">
             <select class="form-control" name="search_type" onchange="check(this);">
                 <option value="None">Make a selection</option>
                 <option value="Restaurants" id="Restaurants">Restaurants</option>
@@ -19,16 +19,16 @@
             </select>
         </div>
 
-        <div class="form-group form-group row col-xs-12 col-md-6 col-lg-9"> 
+        <div class="form-group row col-xs-12 col-md-6 col-lg-offset-3"> 
             <div class="span3"><input class ="form-control"type="text" name="Search" placeholder="Enter your search here.." required>
             </div>
         </div>
         
-            <div class="form-group row col-xs-12 col-md-6 col-lg-9"id="zipcode" style="display: none;">
+            <div class="form-group row col-xs-12 col-md-6 col-lg-offset-3"id="zipcode" style="display: none;">
                 <input class="form-control" type="text" name="zipcode" placeholder="location">
             </div>
         
-    <div class="row col-xs-12 col-md-6 col-lg-9">
+    <div class="row col-xs-12 col-md-6 col-lg-offset-3">
         <button type="submit" value="Go!" id="search_button"><span class="glyphicon glyphicon-search"></span>
         </button>
     </div>
