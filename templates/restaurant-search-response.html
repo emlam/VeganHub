@@ -31,8 +31,8 @@ function test_func(data) {
         }
     }
 }
-//we are putting our data (a jinja var) with "safe" which will avoid
-//the risk of a variable to include char affecting the resulting html
+//we are putting our data (a jinja var) with "safe", telling Jinja that
+//these values are safe, meaning to disable autoescape which is the default. 
 test_func({{ data|safe }});
 
 </script>
