@@ -4,36 +4,59 @@
 
 <h2>Your results for <em>{{ term }}</em> in <em>{{ location }}</em> </h2>
 
-<div>
+<div id="results_container">
 <script>
-//Function that takes data which is json file we are passing in. 
+// Function that takes data which is json file we are passing in. 
 function test_func(data) {
     // document.write(JSON.stringify(data));
     //here, we are getting the keys from our json file(named data)
     for (i in data){
         //here we are printing out the name of the company (first nest 
         //of our json file...)
-        document.write("Name of the company:", i);
+        // document.write("Name of the company:", i);
+
         //Declaring the key to the company name in our json
         var key = i;
         //Extract another JSON obj for the key in our json at the
         //company name
         var val = data[i];
+
+        var co_div = document.createElement("div");
+        var results = document.getElementById("results_container");
+        results_container.appendChild(co_div);
+
+
+        var co_name = document.createElement("h1");
+        co_name.innerText = key;
+        co_div.appendChild(co_name);
+
         //Uing this for loop to get to the keys and values for everything
         //in our json file At "Company Name"
         for(item in val){
+            // var thing = document.createElement();
             //here we are declaring a new key to "item"
             var sub_key = item;
             //Declaring a new value for the value At the current Item
             var sub_val = val[item];
             //Printing keys and values onto our page.
-            document.write(" KEYS:  " + sub_key + " Values:  " + sub_val + " ");
+            // document.write(" KEYS:  " + sub_key + " Values:  " + sub_val + " ");
+
+            var co_info_div = document.createElement("div");
+            co_div.appendChild(co_info_div);
+
+            var co_data = document.createElement("p");
+            co_data.innerText = sub_key + " " + sub_val;
+
+            co_info_div.appendChild(co_data);
+
+
         }
     }
 }
 //we are putting our data (a jinja var) with "safe", telling Jinja that
 //these values are safe, meaning to disable autoescape which is the default. 
 test_func({{ data|safe }});
+
 
 </script>
 </div>

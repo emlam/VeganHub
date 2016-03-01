@@ -51,10 +51,13 @@ def handle_search():
                 "snippet_text": api_result['businesses'][i]['snippet_text'],
                 "url": b['url']
                 }
+        json_data = json.dumps(cleaned_data)
+        print "THIS IS OUR JSON DATAAA: ", json_data
         return render_template("restaurant-search-response.html",
-                                data=cleaned_data,
+                                data=json_data,
                                 term=search_term,
-                                location=location_term)
+                                location=location_term,
+                                )
     elif search_type == "Drinks":
         db_result = search_drink_db(search_term)
         return render_template('drink_search.html', term=db_result)
@@ -83,6 +86,9 @@ def search_drink_db(term):
             Drink.tag.like("%"+term+"%"))).all()
     print drink
     return drink
+
+
+
 
 if __name__ == '__main__':
     app.debug = True
