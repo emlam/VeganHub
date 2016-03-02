@@ -8,12 +8,13 @@
 <script>
 // Function that takes data which is json file we are passing in. 
 function test_func(data) {
-    // document.write(JSON.stringify(data));
+    //starting a counter to keep track of # of results for use
+    //with our url
+    var url_counter = 0;
     //here, we are getting the keys from our json file(named data)
     for (i in data){
-        //here we are printing out the name of the company (first nest 
-        //of our json file...)
-        // document.write("Name of the company:", i);
+        //add 1 each time to our counter for each loop
+        url_counter++;
 
         //Declaring the key to the company name in our json
         var key = i;
@@ -21,34 +22,70 @@ function test_func(data) {
         //company name
         var val = data[i];
 
+        //create a div for company name
         var co_div = document.createElement("div");
+        //a container for our results
         var results = document.getElementById("results_container");
+        //appending our div which holds our company name to our results container
         results_container.appendChild(co_div);
 
-
+        //setting variable for our company name to a header size h1
         var co_name = document.createElement("h1");
+        //setting the  variable to the key (which is going to be the co name)
         co_name.innerText = key;
+        //setting a class to our co name variable for css purposes
+        co_name.setAttribute("class","co_name_header");
+        //appending the company name header to our div
         co_div.appendChild(co_name);
 
         //Uing this for loop to get to the keys and values for everything
         //in our json file At "Company Name"
         for(item in val){
-            // var thing = document.createElement();
-            //here we are declaring a new key to "item"
+            //renaming item to sub_key for clarity
             var sub_key = item;
-            //Declaring a new value for the value At the current Item
-            var sub_val = val[item];
-            //Printing keys and values onto our page.
-            // document.write(" KEYS:  " + sub_key + " Values:  " + sub_val + " ");
+            //pulling out the value for that sub_key
+            var sub_val = val[sub_key];
 
+            //create a container for our values we need to add
             var co_info_div = document.createElement("div");
+            //add a unique id to each container
+            co_info_div.id = sub_key + url_counter;
+            //append values in our co info div
+            //to our parent container
             co_div.appendChild(co_info_div);
 
+            //setting a variable to a p tag
             var co_data = document.createElement("p");
-            co_data.innerText = sub_key + " " + sub_val;
 
+            //beginning an if to check if there we encounter a url key
+            if (sub_key==='url') {
+                //creating an a element 
+                var url_link = document.createElement('a');
+                //setting our a href to the subvalue of url
+                url_link.href = sub_val;
+                //setting the inner text of the url link to the subvalue for 
+                //the name.
+                url_link.innerText = sub_val;
+                // url_link.innerText = "I'm so cool";
+
+                //setting the innertext of our p tag named co_data to
+                //the subkey with a space
+                co_data.innerText = sub_key + " ";
+
+            } else {
+                //if we don't encounter url then we want to
+                //have innertext of our p tag to be all the sub keys, a space,
+                //and a sub value
+                co_data.innerText = sub_key + " " + sub_val;
+            }
+
+            //after we're done doing our check, we want to add
+            //our data to our div we began at the beginning of this subloop
             co_info_div.appendChild(co_data);
-
+            //here, we're getting our element based on the url and the id it has
+            //and appending the url_link which should now be clickable at this 
+            //point
+            document.getElementById('url'+url_counter).appendChild(url_link);
 
         }
     }
@@ -57,8 +94,8 @@ function test_func(data) {
 //these values are safe, meaning to disable autoescape which is the default. 
 test_func({{ data|safe }});
 
-
 </script>
 </div>
+
 
 {% endblock %}
