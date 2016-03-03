@@ -4,6 +4,15 @@
 
 <h2>Your results for <em>{{ term }}</em> in <em>{{ location }}</em> </h2>
 
+<nav>
+  <ul class="pagination">
+    <li id="prev_button"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+        <li id="next_button"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+  </ul>
+</nav>
+
+
+
 <div id="results_container">
 <script>
 // Function that takes data which is json file we are passing in. 
@@ -24,6 +33,7 @@ function test_func(data) {
 
         //create a div for company name
         var co_div = document.createElement("div");
+        co_div.setAttribute("class","result");
         //a container for our results
         var results = document.getElementById("results_container");
         //appending our div which holds our company name to our results container
@@ -93,6 +103,36 @@ function test_func(data) {
 //we are putting our data (a jinja var) with "safe", telling Jinja that
 //these values are safe, meaning to disable autoescape which is the default. 
 test_func({{ data|safe }});
+
+function setupPagination() {
+    $('#results_container div.result:gt(4)').hide();
+
+    $('#next_button').click(handleNext);
+    $('#prev_button').click(handlePrevious);
+
+}
+setupPagination();
+
+function handleNext(){
+    var oldResults = $('#results_container div.result:lt(5)');
+    var nextResults = oldResults.next().next().next().next().next();
+    // debugger;
+    var removeResults = oldResults.remove();
+    // console.log(removeResults);
+    oldResults.append('#results_container');
+    oldResults.hide();
+    nextResults.show();
+}
+
+function handlePrevious() {
+    var oldResults = $('#results_container div.result:lt(5)');
+    var prevResults = oldResults.prev().prev().prev().prev().prev();
+    // var removeResults = oldResults.remove();
+    oldResults.prepend('#results_container');
+    // oldResults.hide();
+    prevResults.show();
+
+}
 
 </script>
 </div>
