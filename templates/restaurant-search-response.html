@@ -117,20 +117,20 @@ function handleNext(){
     var oldResults = $('#results_container div.result:lt(5)');
     var nextResults = oldResults.next().next().next().next().next();
     // debugger;
-    var removeResults = oldResults.remove();
-    // console.log(removeResults);
-    oldResults.append('#results_container');
+    var removeResults = oldResults.detach();
+    oldResults.appendTo('#results_container');
     oldResults.hide();
     nextResults.show();
 }
 
 function handlePrevious() {
     var oldResults = $('#results_container div.result:lt(5)');
-    var prevResults = oldResults.prev().prev().prev().prev().prev();
-    // var removeResults = oldResults.remove();
-    oldResults.prepend('#results_container');
-    // oldResults.hide();
-    prevResults.show();
+    // debugger;
+    var nextResults = oldResults.prev().prev().prev().prev();
+    // var removeResults = oldResults.detach();
+    oldResults.prependTo('#results_container');
+    oldResults.show();
+    nextResults.hide();
 
 }
 
