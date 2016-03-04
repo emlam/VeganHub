@@ -45,10 +45,9 @@ def handle_search():
         for i in range(len(api_result['businesses'])):
             b = api_result['businesses'][i]
             cleaned_data[b['name']] = {
-                "name": b['name'],
                 "address": b['location']['display_address'],
                 "phone": b['display_phone'],
-                "snippet_text": api_result['businesses'][i]['snippet_text'],
+                "Quick Info": api_result['businesses'][i]['snippet_text'],
                 "url": b['url']
                 }
         json_data = json.dumps(cleaned_data)
@@ -86,8 +85,6 @@ def search_drink_db(term):
             Drink.tag.like("%"+term+"%"))).all()
     print drink
     return drink
-
-
 
 
 if __name__ == '__main__':
