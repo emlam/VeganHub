@@ -59,9 +59,14 @@ def handle_search():
                                 )
     elif search_type == "Drinks":
         db_result = search_drink_db(search_term)
+
+        if db_result == []:
+            return render_template('no_results.html', term=search_term)
+
         return render_template('drink_search.html', term=db_result)
     else:
         print "nothing here, sorry. "
+
 
 
 #helper functions below
