@@ -4,6 +4,7 @@
 
 <h2>Your results for <em>{{ term }}</em> in <em>{{ location }}</em> </h2>
 
+<!-- these are going to be our buttons used in pagination at bottom -->
 <nav>
   <ul class="pagination">
     <li id="prev_button"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
@@ -104,20 +105,28 @@ function test_func(data) {
 //these values are safe, meaning to disable autoescape which is the default. 
 test_func({{ data|safe }});
 
+//setting up our pagination Function
 function setupPagination() {
+    //we want to get 5 results and hide the rest from our
+    //results container. 
     $('#results_container div.result:gt(4)').hide();
 
+    //creating an Event handler for the next button image to run
+    //the function handleNext when clicked. 
     $('#next_button').click(handleNext);
+    //creating an Event handler for the prev button image to run
+    //the function handlePrevious when clicked.
     $('#prev_button').click(handlePrevious);
 
 }
 setupPagination();
 
 function handleNext(){
+    //creating an variable to capture the 5 results less than the selector
     var oldResults = $('#results_container div.result:lt(5)');
+
     var nextResults = oldResults.next().next().next().next().next();
-    // debugger;
-    var removeResults = oldResults.detach();
+    var detachResults = oldResults.detach();
     oldResults.appendTo('#results_container');
     oldResults.hide();
     nextResults.show();
@@ -125,12 +134,11 @@ function handleNext(){
 
 function handlePrevious() {
     var oldResults = $('#results_container div.result:lt(5)');
-    // debugger;
-    var nextResults = oldResults.prev().prev().prev().prev();
-    // var removeResults = oldResults.detach();
-    oldResults.prependTo('#results_container');
-    oldResults.show();
-    nextResults.hide();
+    var prevResults = $('#results_container div.result:gt(-6)');
+    prevResults.detach();
+    prevResults.prependTo('#results_container');
+    oldResults.hide();
+    prevResults.show();
 
 }
 
