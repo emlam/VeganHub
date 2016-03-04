@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- these are going to be our buttons used in pagination at bottom -->
+<nav>
+  <ul class="pagination">
+    <li id="prev_button"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+        <li id="next_button"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+  </ul>
+</nav>
+
+<div id="drinks_container">
+
+{% for item in term %}
+<p class="result">
+<strong>Name: </strong> {{ item.tag }} <br>
+Company Name: {{ item.company_name }} <br>
+Status: {{ item.status }}
+<div>
+{% endfor %}
+<script>
+// setting up our pagination Function
+function setupPagination() {
+    //we want to get 5 results and hide the rest from our
+    //results container. 
+    $('#results_container div.result:gt(4)').hide();
+
+    //creating an Event handler for the next button image to run
+    //the function handleNext when clicked. 
+    $('#next_button').click(handleNext);
+    //creating an Event handler for the prev button image to run
+    //the function handlePrevious when clicked.
+    $('#prev_button').click(handlePrevious);
+
+}
+setupPagination();
+
+function handleNext(){
+    //creating an variable to capture the 5 results less than the selector
+    var oldResults = $('#drinks_container p.result:lt(5)');
+
+    var nextResults = oldResults.next().next().next().next().next();
+    var detachResults = oldResults.detach();
+    oldResults.appendTo('#drinks_container');
+    oldResults.hide();
+    nextResults.show();
+}
+
+function handlePrevious() {
+    var oldResults = $('#drinks_container p.result:lt(5)');
+    var prevResults = $('#drinks_container p.result:gt(-6)');
+    prevResults.detach();
+    prevResults.prependTo('#drinks_container');
+    oldResults.hide();
+    prevResults.show();
+
+}
+</script>
+
+
+{% endblock %}
