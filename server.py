@@ -51,6 +51,8 @@ def handle_search():
                 "url": b['url']
                 }
         json_data = json.dumps(cleaned_data)
+        if cleaned_data == {}:
+            return render_template('no_results.html',term=search_term)
         print "THIS IS OUR JSON DATAAA: ", json_data
         return render_template("restaurant-search-response.html",
                                 data=json_data,
