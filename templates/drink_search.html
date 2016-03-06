@@ -23,6 +23,9 @@ Company Name: {{ item.company_name }} <br>
   <button type="button" class="btn btn-warning btn-xs active">Has Some Vegan Options </button>
 {% elif item.status == 'Not Vegan Friendly'%}
  <button type="button" class="btn btn-danger btn-xs active">Not Vegan Friendly </button>
+ {% elif item.status == ''%}
+  <button type="button" class="btn btn-default btn-xs active">No Info Avail </button>
+
 
 {% endif %}
 
