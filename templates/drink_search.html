@@ -18,17 +18,15 @@
 {% for item in term %}
 <p class="result">
 <strong>Name: </strong> {{ item.tag }} <br>
-Company Name: {{ item.company_name }} <br>
+<strong>Company Name:</strong> {{ item.company_name }} <br>
+<strong> Status:</strong>
 
 {% if item.status == 'Vegan Friendly' %}
   <button type="button" class="btn btn-success btn-xs active">Vegan Friendly </button>
 {% elif item.status == 'Has Some Vegan Options'%}
   <button type="button" class="btn btn-warning btn-xs active">Has Some Vegan Options </button>
-{% elif item.status == 'Not Vegan Friendly'%}
+{% elif item.status == 'Not Vegan friendly' %}
  <button type="button" class="btn btn-danger btn-xs active">Not Vegan Friendly </button>
- {% elif item.status == ''%}
-  <button type="button" class="btn btn-default btn-xs active">No Info Avail </button>
-
 
 {% endif %}
 
