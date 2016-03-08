@@ -11,7 +11,7 @@
 </nav>
 
 <div class="results">
-<h3>Results for <em>{{ term }}</em> in  <em>{{ location }}</em> </h3>
+<h3>Results for <em>{{ term }}</em> in <em>{{ location }}</em> </h3>
 </div>
 
 <div id="results_container" class="results">
@@ -67,11 +67,13 @@ function test_func(data) {
 
             //setting a variable to a p tag
             var co_data = document.createElement("p");
+            co_data.setAttribute("class","same_line")
 
             //beginning an if to check if there we encounter a url key
             if (sub_key==='url') {
                 //creating an a element 
                 var url_link = document.createElement('a');
+                url_link.setAttribute("class","same_line")
                 //setting our a href to the subvalue of url
                 url_link.href = sub_val;
                 //setting the inner text of the url link to the subvalue for 
@@ -143,6 +145,9 @@ function handlePrevious() {
 }
 
 </script>
+<p class="yelp"> Powered By:
+<img src="/static/yelp-logo-xsmall.png">
+</p>
 </div>
 
 
