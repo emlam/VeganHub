@@ -45,7 +45,7 @@ def handle_search():
         for i in range(len(api_result['businesses'])):
             b = api_result['businesses'][i]
             quick_info = b['snippet_text']
-            quick_info =  quick_info.rstrip('\n')
+            quick_info =  quick_info.replace('\n','')
             cleaned_data[b['name']] = {
                 "address": b['location']['display_address'],
                 "phone": b['display_phone'],
