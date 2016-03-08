@@ -15,7 +15,6 @@
 <p class="result">
 <strong>Name: </strong> {{ item.tag }} <br>
 Company Name: {{ item.company_name }} <br>
-<!-- Status: {{ item.status }} -->
 
 {% if item.status == 'Vegan Friendly' %}
   <button type="button" class="btn btn-success btn-xs active">Vegan Friendly </button>
@@ -29,7 +28,6 @@ Company Name: {{ item.company_name }} <br>
 
 {% endif %}
 
-<div>
 {% endfor %}
 
 
@@ -38,7 +36,7 @@ Company Name: {{ item.company_name }} <br>
 function setupPagination() {
     //we want to get 5 results and hide the rest from our
     //results container. 
-    $('#results_container div.result:gt(4)').hide();
+    $('#drinks_container p.result:gt(4)').hide();
 
     //creating an Event handler for the next button image to run
     //the function handleNext when clicked. 
@@ -71,6 +69,6 @@ function handlePrevious() {
 
 }
 </script>
-
+</div>
 
 {% endblock %}
