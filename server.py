@@ -44,12 +44,15 @@ def handle_search():
         #my new empty dictionary
         for i in range(len(api_result['businesses'])):
             b = api_result['businesses'][i]
+            quick_info = b['snippet_text']
+            quick_info =  quick_info.rstrip('\n')
             cleaned_data[b['name']] = {
                 "address": b['location']['display_address'],
                 "phone": b['display_phone'],
-                "Quick Info": api_result['businesses'][i]['snippet_text'],
+                "Quick Info": quick_info,
                 "url": b['url']
                 }
+
         json_data = json.dumps(cleaned_data)
         if cleaned_data == {}:
             return render_template('no_results.html',term=search_term)
@@ -65,7 +68,7 @@ def handle_search():
         if db_result == []:
             return render_template('no_results.html', term=search_term)
 
-        return render_template('drink_search.html', term=db_result)
+        return render_template('drink_search.html', term=db_result, query=search_term)
     else:
         print "nothing here, sorry. "
 
