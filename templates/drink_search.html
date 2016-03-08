@@ -9,7 +9,11 @@
   </ul>
 </nav>
 
-<div id="drinks_container">
+<div class="drinks">
+<h3>Your results for <em>{{ query }}</em></h3>
+</div>
+
+<div id="drinks_container" class="drinks">
 
 {% for item in term %}
 <p class="result">
