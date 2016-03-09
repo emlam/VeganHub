@@ -47,8 +47,8 @@ def handle_search():
             quick_info = b['snippet_text']
             quick_info =  quick_info.replace('\n','')
             cleaned_data[b['name']] = {
-                "address": b['location']['display_address'],
-                "phone": b['display_phone'],
+                "Address": b['location']['display_address'],
+                "Phone": b['display_phone'],
                 "Quick Info": quick_info,
                 "url": b['url']
                 }
