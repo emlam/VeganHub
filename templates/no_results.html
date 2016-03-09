@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<p>
-    Sorry, no results found for {{ term }}
+<div class="no_results">
+<p class="no_results">
+    Sorry, no results found for <em>{{ term }} </em>
 </p>
+</div>
+
+<img class ="no_results_img" src="/static/sad_veggies.gif">
 
 {% endblock %}
