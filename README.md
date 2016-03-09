@@ -20,7 +20,8 @@ With VeganHub you can search for:
 
 ### Tech
 * PostgreSQL, SQLAlchemy, Python, Flask, Jinja, Javascript, JQuery, Bootstrap, HTML/CSS
- ### APIs Used
+ 
+### APIs Used
 * Yelp, Barnivore
 
 
