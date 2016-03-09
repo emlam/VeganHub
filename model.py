@@ -37,8 +37,8 @@ def connect_to_db(app):
 
     #Configuration to use Postgres Database
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///drinks'
-    # app.config['SQLALCHEMY_ECHO'] = True
-    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = None
+    app.config['SQLALCHEMY_ECHO'] = True
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = None
     db.app = app
     db.init_app(app)
 
