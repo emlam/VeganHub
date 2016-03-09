@@ -83,13 +83,13 @@ function test_func(data) {
 
                 //setting the innertext of our p tag named co_data to
                 //the subkey with a space
-                co_data.innerText = sub_key + " ";
+                // co_data.innerText = sub_key + " ";
 
             } else {
                 //if we don't encounter url then we want to
                 //have innertext of our p tag to be all the sub keys, a space,
                 //and a sub value
-                co_data.innerText = sub_key + " " + sub_val;
+                co_data.innerText = sub_key + ": " + sub_val;
             }
 
             //after we're done doing our check, we want to add
@@ -145,9 +145,6 @@ function handlePrevious() {
 }
 
 </script>
-<p class="yelp"> Powered By:
-<img src="/static/yelp-logo-xsmall.png">
-</p>
 </div>
 
 
