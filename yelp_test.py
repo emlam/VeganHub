@@ -27,7 +27,7 @@ DEFAULT_TERM = 'vegan'
 #adding a new parameter
 CATEGORY_FILTER = 'vegan'
 DEFAULT_LOCATION = 'San Francisco, CA'
-SEARCH_LIMIT = 3
+# SEARCH_LIMIT = 3
 SEARCH_PATH = '/v2/search/'
 BUSINESS_PATH = '/v2/business/'
 
@@ -96,7 +96,7 @@ def search(term, location):
     url_params = {
         'term': term.replace(' ', '+'),
         'location': location.replace(' ', '+'),
-        'limit': SEARCH_LIMIT,
+        # 'limit': SEARCH_LIMIT,
         'category_filter': CATEGORY_FILTER
     }
     return request(API_HOST, SEARCH_PATH, url_params=url_params)
