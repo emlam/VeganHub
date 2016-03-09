@@ -1,0 +1,150 @@
+
+body {
+    font-family: 'Quattrocento Sans', sans-serif;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5)100%,rgba(0,0,0,0.5)100%, rgba(0,0,0,0.5)100%), url(/static/market.jpeg);
+    background-size: cover;
+}
+
+/*results for...*/
+h3 {
+    margin-left: 15px;
+    margin-bottom: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 23px;
+    color: #43A047;
+    font-weight: 700;
+}
+
+h3 em {
+    font-size: 23px;
+    font-weight: 700;
+    color: #7CB342;
+}
+
+/*our logo*/
+.page-header h1 a {
+    margin-left: 15px; 
+    color: #8BC34A;
+    font-size: 50px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+/*tagline*/
+h1 small {
+    color: #C5E1A5;
+    font-size: 75%;
+    font-weight: 700;
+}
+
+/*company name header */
+.co_name_header {
+    color: #4CAF50;
+    font-size: 25px;
+    padding-top: 15px;
+    font-weight: 700;
+
+}
+
+div .result {
+    color: black;
+    margin-left: 15px;
+    margin-top: auto;
+    font-weight: 400;
+    font-size: 125%;
+}
+/*results for our drink response page*/
+p.result {
+    padding-bottom: 10px;
+    font-size: 20px;
+    padding-top: 15px;
+}
+
+.form-group {
+    width: 650px;
+    height: 150px;
+    margin-left: 30%;
+    margin-top: 15%;
+    text-align: center;
+}
+
+.form-boxes {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-control {
+    width: 50px;
+    height: 60px;
+}
+
+select.form-control {
+    width: 193px !important;
+    height: 60px;
+}
+
+#search_button {
+    height: 57px;
+    width: 60px;
+    font-size: 120%;
+    background-color: #959A9C;
+    border-color: #959A9C;
+}
+/*results for our restaurant-search-response*/
+.results {
+    background-color: #E0E0E0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    box-shadow: 10px 10px 5px black;
+}
+/*results for our user query for drink*/
+.drinks {
+    background-color: #E0E0E0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    box-shadow: 10px 10px 5px black; 
+}
+
+.pagination {
+    margin-left: 85%;
+    margin-bottom: auto;
+}
+
+.pagination>li {
+    display: inline-block;
+}
+
+.no_results {
+    margin-left: 15px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    font-size: 25px;
+    color: #8BC34A;
+}
+
+.no_results em {
+    color: #7CB342;
+    font-size: 25px;
+    font-weight: 700;
+
+}
+
+.same_line {
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: 700;
+}
+
+.no_results_img {
+    margin-left: 40%;
+    margin-right: 15px;
+    border-style: solid;
+    border-color: black;
+}
+
+.yelp {
+    margin-left: 90%;
+}
